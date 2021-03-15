@@ -1,0 +1,104 @@
+body {
+    width: 600px;
+    max-height: 500px;
+    font-family: "Arial", "sans-serif";
+    font-size: 12px;
+    user-select: none;
+    margin: 10px;
+    background-color: #fafafa;
+}
+
+/* if Firefox make it a bit bigger because reasons */
+
+@-moz-document url-prefix() {
+    body {
+      width: 600px;
+      max-height: 550px;
+      overflow: hidden;
+    }
+  }
+
+/* @media (prefers-color-scheme: dark) {  
+    body {  
+        background: #35363a;    
+        color: #fafafa;  
+    }
+} */
+
+
+img.tab-close, img.tab-favicon {
+    width: 14px;
+    height: 14px;
+    margin-top: 3px;
+}
+
+div#search-box {
+    position: relative;
+}
+
+input#search {
+    width: 577px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 2px 8px;
+}
+
+input#search:focus {
+    outline: none;
+}
+
+span#clear-search {
+    position: absolute;
+    right: 12px;
+    top: 0;
+    bottom: 0;
+    line-height: 27px;
+    font-size: 22px;
+    color: #444;
+}
+
+div#tablist-wrapper {
+    max-height: 500px;
+    overflow-y: scroll;
+    margin-top: 10px;
+}
+
+table {
+    table-layout: fixed;
+    padding: 0px;
+    margin-left: 4px;
+    border-spacing: 0px 4px;
+}
+
+tr {
+    cursor: pointer;
+}
+
+tr:hover {
+    background-color: #eee;
+}
+
+td {
+    height: 16px;
+}
+
+td:first-child {
+    width: 16px;
+}
+
+td:nth-child(2) {
+    width: 542px;
+    max-width: 542px;
+}
+
+.tab-title-overflow {
+    white-space: nowrap;
+    overflow: hidden;         
+    text-overflow: ellipsis;
+    line-clamp: 1;
+}
+
+td:last-child {
+    width: 16px;
+}
