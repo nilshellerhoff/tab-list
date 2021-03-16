@@ -79,16 +79,23 @@ tr:hover {
     background-color: #eee;
 }
 
+/* table { border-collapse: separate; } */
+
+
 td {
     height: 16px;
 }
 
 td:first-child {
     width: 16px;
+    border: solid 0px #000;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    padding-left: 6px;
 }
 
 td:nth-child(2) {
-    width: 542px;
+    width: 520px;
     max-width: 542px;
 }
 
@@ -101,4 +108,9 @@ td:nth-child(2) {
 
 td:last-child {
     width: 16px;
+    padding-right: 6px;
+    margin-right: 100px;
+    border: solid 0px #000;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
