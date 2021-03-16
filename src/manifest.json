@@ -1,9 +1,4 @@
 {
-	// "browser_specific_settings": {
-	// 	"gecko": {
-	// 		"id": "tab-list@example.com"
-	// 	}
-	// },
     "manifest_version": 2,
     "name": "Tab list",
     "description": "List and manage your open tabs",
