@@ -1,9 +1,9 @@
 {
-	"browser_specific_settings": {
-		"gecko": {
-			"id": "widescreen-browsing@example.com"
-		}
-	},
+	// "browser_specific_settings": {
+	// 	"gecko": {
+	// 		"id": "widescreen-browsing@example.com"
+	// 	}
+	// },
     "manifest_version": 2,
     "name": "Tab list",
     "description": "List and manage your open tabs",
