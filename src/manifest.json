@@ -1,7 +1,7 @@
 {
 	// "browser_specific_settings": {
 	// 	"gecko": {
-	// 		"id": "widescreen-browsing@example.com"
+	// 		"id": "tab-list@example.com"
 	// 	}
 	// },
     "manifest_version": 2,
