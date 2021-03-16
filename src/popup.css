@@ -9,7 +9,6 @@ body {
 }
 
 /* if Firefox make it a bit bigger because reasons */
-
 @-moz-document url-prefix() {
     body {
       width: 600px;
@@ -75,12 +74,16 @@ tr {
     cursor: pointer;
 }
 
+/* table { border-collapse: separate; } */
+
 tr:hover {
     background-color: #eee;
 }
 
-/* table { border-collapse: separate; } */
-
+img.tab-close:hover {
+    transform: scale(1.2);
+    transition: all .05s ease-in-out;
+}
 
 td {
     height: 16px;
@@ -95,8 +98,8 @@ td:first-child {
 }
 
 td:nth-child(2) {
-    width: 520px;
-    max-width: 542px;
+    width: 530px;
+    max-width: 530px;
 }
 
 .tab-title-overflow {
