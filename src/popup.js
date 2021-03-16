@@ -49,6 +49,7 @@ function appendTabs(tabs) {
 	tabs.forEach(function(tab) {
 		html += renderTemplate("tab-template", {
 			tabid : tab.id,
+			url: tab.url,
 			favicon : getFaviconUrl(tab),
 			title: escapeHtml(tab.title)
 		});
@@ -75,11 +76,25 @@ function escapeHtml(unsafe) {
          .replace(/'/g, "&#039;");
 }
 
-function isFirefox(){
+function isFirefox() {
 	if (navigator.userAgent.search("Firefox") != -1) {
 		return true;
 	}
 	return false;
+}
+
+function filterTabs(value) {
+	// loop through all tabs and hide those which do not match
+	var tabs = document.getElementsByClassName("tab-row");
+	for (i=0; i<tabs.length; i++) {
+		txtValue = tabs[i].dataset.tabtitle + tabs[i].dataset.taburl
+		console.log(txtValue);
+		if (txtValue.toUpperCase().indexOf(value.toUpperCase()) > -1) {
+			tabs[i].style.display = '';
+		} else {
+			tabs[i].style.display = 'none';
+		}
+	}
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -91,6 +106,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	// clear search field on x 
 	document.getElementById("clear-search").addEventListener('click', function() {
 		document.getElementById("search").value = ""
+	});
+
+	document.getElementById("search").addEventListener("keyup", function() {
+		filterTabs(document.getElementById("search").value);
 	});
 });
 
