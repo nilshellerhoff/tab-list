@@ -103,11 +103,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	// focus search field
 	document.getElementById("search").focus();
 
-	// clear search field on x 
+	// clear search field on x + initiate search
 	document.getElementById("clear-search").addEventListener('click', function() {
 		document.getElementById("search").value = ""
+		filterTabs(document.getElementById("search").value);
 	});
 
+	// search on change of search value
 	document.getElementById("search").addEventListener("keyup", function() {
 		filterTabs(document.getElementById("search").value);
 	});
