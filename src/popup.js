@@ -24,7 +24,6 @@ function addFocusEvents() {
 	for (i=0; i<tabs.length; i++) {
 		tabs[i].addEventListener('click', function() {
 			var tabid = Number(this.dataset.tabid);
-			console.log("tabid " + tabid);
 			chrome.tabs.get(tabid, function(tab) {
 				chrome.tabs.highlight({'tabs': tab.index, windowId: tab.windowId}, function() {});
 			  });
@@ -88,7 +87,6 @@ function filterTabs(value) {
 	var tabs = document.getElementsByClassName("tab-row");
 	for (i=0; i<tabs.length; i++) {
 		txtValue = tabs[i].dataset.tabtitle + tabs[i].dataset.taburl
-		console.log(txtValue);
 		if (txtValue.toUpperCase().indexOf(value.toUpperCase()) > -1) {
 			tabs[i].style.display = '';
 		} else {
