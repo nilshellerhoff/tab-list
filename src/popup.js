@@ -26,6 +26,8 @@ function addFocusEvents() {
 			var tabid = Number(this.dataset.tabid);
 			chrome.tabs.get(tabid, function(tab) {
 				chrome.tabs.highlight({'tabs': tab.index, windowId: tab.windowId}, function() {});
+				// close popup window - chrome does this automatically, firefox does not
+				window.close();
 			  });
 		});
 	}
