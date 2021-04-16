@@ -6,3 +6,8 @@
 This extension is made for all of us tab hoarders out there. When you click the icon, it will ist all your open tabs. From there you can search for tabs and close tabs.
 
 ![alt text](https://github.com/nilshellerhoff/tab-list/raw/main/assets/Screenshot1.png "Screenshot")
+
+### TODOs
+
+- [ ] Show tabs from all windows
+- [ ] Allow sorting of tabs by dragging
