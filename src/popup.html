@@ -12,6 +12,12 @@
 		</div>
 		<div id="tablist-wrapper">
 			<table id="tablist">
+				<template id="window-header-template">
+					<tr class="window-header"">
+						<td colspan="3">Window</td>
+					</tr>
+				</template>
+
 				<template id="tab-template">
 					<tr class="tab-row" data-tabid="{tabid}" data-taburl="{url}" data-tabtitle="{title}">
 						<td><img class="tab-favicon focus-click" src="{favicon}" data-tabid={tabid}></td>

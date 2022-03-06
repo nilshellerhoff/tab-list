@@ -1,5 +1,5 @@
 function getTabs() {
-	chrome.tabs.query({currentWindow: true}, function(tabs) {
+	chrome.tabs.query({}, function(tabs) {
 		appendTabs(tabs);
 	});
 }
@@ -25,9 +25,14 @@ function addFocusEvents() {
 		tabs[i].addEventListener('click', function() {
 			var tabid = Number(this.dataset.tabid);
 			chrome.tabs.get(tabid, function(tab) {
-				chrome.tabs.highlight({'tabs': tab.index, windowId: tab.windowId}, function() {});
-				// close popup window - chrome does this automatically, firefox does not
-				window.close();
+				// focus the tab
+				chrome.tabs.highlight({tabs: tab.index, windowId: tab.windowId}, function() {
+					// focus the window
+					chrome.windows.update(tab.windowId, { focused : true });
+					
+					// close popup window - chrome does this automatically, firefox does not
+					window.close();
+				});
 			  });
 		});
 	}
@@ -47,14 +52,38 @@ function getFaviconUrl(tab) {
 
 function appendTabs(tabs) {
 	var html = "";
-	tabs.forEach(function(tab) {
-		html += renderTemplate("tab-template", {
-			tabid : tab.id,
-			url: tab.url,
-			favicon : getFaviconUrl(tab),
-			title: escapeHtml(tab.title)
+
+	// get a list of all window IDs
+	windowIds = [...new Set(tabs.map(tab => tab.windowId))];
+
+	// sort the window IDs so that the current window is first
+	// currentWindowId = 1
+	// windowIds = windowIds.sort((a, b) => {
+	// 	if (a == currentWindowId) {
+	// 		return -1;
+	// 	} else if (b == currentWindowId) {
+	// 		return 1;
+	// 	} else {
+	// 		return 0;
+	// 	}
+	// });
+
+	// cycle through all the windows first
+	windowIds.forEach(windowId => {
+		// get all tabs in this window
+		html += renderTemplate("window-header-template", {windowId: windowId});
+
+		var windowTabs = tabs.filter(tab => tab.windowId == windowId);
+		windowTabs.forEach(function(tab) {
+			html += renderTemplate("tab-template", {
+				tabid : tab.id,
+				url: tab.url,
+				favicon : getFaviconUrl(tab),
+				title: escapeHtml(tab.title)
+			});
 		});
 	});
+
 	document.getElementById("tablist").innerHTML = html;
 	addFocusEvents();
 	addCloseEvents();

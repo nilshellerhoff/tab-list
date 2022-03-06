@@ -9,5 +9,5 @@ This extension is made for all of us tab hoarders out there. When you click the 
 
 ### TODOs
 
-- [ ] Show tabs from all windows
+- [x] Show tabs from all windows
 - [ ] Allow sorting of tabs by dragging
