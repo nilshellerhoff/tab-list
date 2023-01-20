@@ -1,6 +1,8 @@
 function getTabs() {
 	chrome.tabs.query({}, function(tabs) {
-		appendTabs(tabs);
+		chrome.windows.getAll(windows => {
+			appendTabs(tabs, windows);
+		})
 	});
 }
 
@@ -50,23 +52,23 @@ function getFaviconUrl(tab) {
 	return "chrome://favicon/" + tab.url;
 }
 
-function appendTabs(tabs) {
+async function appendTabs(tabs, windows) {
 	var html = "";
 
 	// get a list of all window IDs
-	windowIds = [...new Set(tabs.map(tab => tab.windowId))];
+	windowIds = windows.map(window => window.id)
+	currentWindowId = windows.filter(window => window.focused)[0].id
 
 	// sort the window IDs so that the current window is first
-	// currentWindowId = 1
-	// windowIds = windowIds.sort((a, b) => {
-	// 	if (a == currentWindowId) {
-	// 		return -1;
-	// 	} else if (b == currentWindowId) {
-	// 		return 1;
-	// 	} else {
-	// 		return 0;
-	// 	}
-	// });
+	windowIds = windowIds.sort((a, b) => {
+		if (a == currentWindowId) {
+			return -1;
+		} else if (b == currentWindowId) {
+			return 1;
+		} else {
+			return 0;
+		}
+	});
 
 	// cycle through all the windows first
 	windowIds.forEach(windowId => {
