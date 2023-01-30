@@ -1,5 +1,5 @@
 # Tab List
-<a href="https://addons.mozilla.org/en-US/firefox/addon/tab-list-manager/">
+<a href="https://addons.mozilla.org/firefox/addon/tab-list-manager/">
   <img src="https://user-images.githubusercontent.com/24147614/214060299-df8e2fc1-41c9-4100-a474-0d5112f7683b.png" width="172px" alt="Get it for Firefox">
 </a>
 
